@@ -1,5 +1,6 @@
 package com.keralakitchen.delivery.service;
 
+import com.keralakitchen.delivery.Collections;
 import com.keralakitchen.delivery.entity.Users;
 import com.keralakitchen.delivery.mapper.IMapper;
 import com.keralakitchen.delivery.model.User;
@@ -43,6 +44,6 @@ public class UserService implements IUserService {
                                         where("lastName").is(user.getLastName()))
                         )
                 ),
-                User.class,"users");
+                User.class, Collections.Users.value());
     }
 }
