@@ -8,6 +8,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class User {
 
+    @Schema(example = "", requiredMode = Schema.RequiredMode.NOT_REQUIRED, defaultValue = "")
+    private String id;
     @Schema(example = "John", requiredMode = Schema.RequiredMode.REQUIRED, defaultValue = "")
     private String firstName;
     @Schema(example = "Doe", requiredMode = Schema.RequiredMode.REQUIRED, defaultValue = "")
