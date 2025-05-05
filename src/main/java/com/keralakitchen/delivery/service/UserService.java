@@ -28,6 +28,7 @@ public class UserService implements IUserService {
 
     @Autowired
     MongoTemplate mongoTemplate;
+
     public Optional<Users> createUser(User user){
         Optional<Users> newUser = Optional.empty();
         Users userEntity = userRepository.save(userMapper.mapToUserEntity(user));
@@ -35,7 +36,6 @@ public class UserService implements IUserService {
         return newUser;
     }
 
-//    @Query(value = "{ 'firstName' : ?0 , 'lastName':?1}", fields="{ 'firstName' : 1, 'lastName' : 2}")
     public List<User> getUsers(User user) {
         return mongoTemplate.find(
                 (

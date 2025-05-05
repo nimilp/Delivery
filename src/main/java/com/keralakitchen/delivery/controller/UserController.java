@@ -28,10 +28,6 @@ public class UserController extends BaseController{
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
     @Autowired
     IUserService userService;
-//    @GetMapping("")
-//    public ResponseEntity<String> getUsers() throws NoUsersException {
-//        throw new NoUsersException("{\"Message\":\"No Users\"}");
-//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<String> getUser(@PathVariable String id) throws NoUserException {
@@ -48,7 +44,6 @@ public class UserController extends BaseController{
     public ResponseEntity<List<User>> getUsers(@RequestBody User user) throws NoUsersException {
 
         List<User> users = userService.getUsers(user);
-//        log.debug("users are empty");
         if(!users.isEmpty()) {
             return new ResponseEntity<>(users,HttpStatus.OK);
         } else {
@@ -62,6 +57,7 @@ public class UserController extends BaseController{
             @ApiResponse(responseCode = "201", description = "User is created"),
             @ApiResponse(responseCode = "500", description = "Unsuccessful Operation.")
     })
+
     public ResponseEntity<User> createUser(@RequestBody User user) throws CreateUserException {
 
         try {
