@@ -23,15 +23,13 @@ public class UserService implements IUserService {
 
     @Autowired
     IMapper userMapper;
-    @Autowired
-    IUserRepository userRepository;
 
     @Autowired
     MongoTemplate mongoTemplate;
 
     public Optional<Users> createUser(User user){
         Optional<Users> newUser = Optional.empty();
-        Users userEntity = userRepository.save(userMapper.mapToUserEntity(user));
+        Users userEntity = mongoTemplate.save(userMapper.mapToUserEntity(user));
         newUser = Optional.of(userEntity);
         return newUser;
     }
@@ -40,8 +38,8 @@ public class UserService implements IUserService {
         return mongoTemplate.find(
                 (
                         query(where("")
-                                .orOperator(where("firstName").is(user.getFirstName()),
-                                        where("lastName").is(user.getLastName()))
+                                .orOperator(where("firstName").regex(user.getFirstName()),
+                                        where("lastName").regex(user.getLastName()))
                         )
                 ),
                 User.class, Collections.Users.value());
