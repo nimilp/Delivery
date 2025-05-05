@@ -4,3 +4,6 @@ spring:
       authentication-database: admin
       database: KeralaKitchen
       port: 27017
+springdoc:
+  swagger-ui:
+    path: /docs
