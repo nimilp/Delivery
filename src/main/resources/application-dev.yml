@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      username: keralakitchen
+      password: keralakitchen
+      host: 192.168.1.17
+
