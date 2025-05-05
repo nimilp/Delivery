@@ -1,15 +1,17 @@
 package com.keralakitchen.delivery.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class User {
 
-    @Schema(name = "First Name", example = "John", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(example = "John", requiredMode = Schema.RequiredMode.REQUIRED, defaultValue = "")
     private String firstName;
-    @Schema(name = "Last Name", example = "Doe", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(example = "Doe", requiredMode = Schema.RequiredMode.REQUIRED, defaultValue = "")
     private String lastName;
-    @Schema(name = "User Type", example = "Customer", requiredMode = Schema.RequiredMode.REQUIRED)
+    @Schema(example = "Customer", requiredMode = Schema.RequiredMode.REQUIRED, defaultValue = "")
     private String type;
 }

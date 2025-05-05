@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController()
@@ -24,10 +25,10 @@ public class UserController extends BaseController{
 
     @Autowired
     IUserService userService;
-    @GetMapping("")
-    public ResponseEntity<String> getUsers() throws NoUsersException {
-        throw new NoUsersException("{\"Message\":\"No Users\"}");
-    }
+//    @GetMapping("")
+//    public ResponseEntity<String> getUsers() throws NoUsersException {
+//        throw new NoUsersException("{\"Message\":\"No Users\"}");
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<String> getUser(@PathVariable String id) throws NoUserException {
@@ -35,25 +36,34 @@ public class UserController extends BaseController{
         throw new NoUserException("{\"Message\":\"No user Found\",\"id\":"+id+"}");
     }
 
-    @GetMapping("/find")
-    @Operation(summary = "Get a User By FirstName", description = "Api to Fetch users by First Name")
+    @PostMapping("/search")
+    @Operation(summary = "Get users By First Name or Last Name", description = "Api to Fetch users by First Name or Last Name")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "400", description = "Operation is successfully"),
+            @ApiResponse(responseCode = "400", description = "Operation is successful."),
             @ApiResponse(responseCode = "404", description = "")
     })
-    public ResponseEntity<User> getUserByFirstName(@RequestParam String firstName){
+    public ResponseEntity<List<User>> getUsers(@RequestBody User user) throws NoUsersException {
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        List<User> users = userService.getUsers(user);
+        if(!users.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            throw new NoUsersException("{\"Message\":\"No Users\"}");
+        }
     }
 
     @PostMapping
+    @Operation(summary = "Create a User", description = "Api to create User")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "User is created"),
+            @ApiResponse(responseCode = "500", description = "Unsuccessful Operation.")
+    })
     public ResponseEntity<User> createUser(@RequestBody User user) throws CreateUserException {
 
         try {
             Optional<Users> newUser = userService.createUser(user);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e){
-
             throw new CreateUserException(String.format("Error while creating user: %s", user.toString()));
         }
     }
