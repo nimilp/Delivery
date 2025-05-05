@@ -35,6 +35,7 @@ public class UserService implements IUserService {
     }
 
     public List<User> getUsers(User user) {
+        
         return mongoTemplate.find(
                 (
                         query(where("")
