@@ -1,4 +1,11 @@
+server:
+  servlet:
+    context-path: /keralakitchen
 spring:
+  security:
+    user:
+      name: admin
+      password: $2a$10$LAcnTld1x/LFDjFRU.sXzu2FKF3YtYIfPH5Kx5gGzLopsBq0uWQhC
   data:
     mongodb:
       authentication-database: admin
@@ -6,4 +13,23 @@ spring:
       port: 27017
 springdoc:
   swagger-ui:
+    disable-swagger-default-url: true
+    query-config-enabled: true
     path: /docs
+  api-docs:
+#    swagger: "2.0"
+    path: /v3/api-docs
+    openapi: 2.8.8
+    #version: openapi_3_0
+logging:
+  file:
+#    path: logs/
+    name: logs/delivery-app.log
+  level:
+    ROOT: INFO
+    org.springframework.web: INFO
+    org.springframework.controllers: INFO
+    org.springframework.boot.autoconfigure: ERROR
+    org.hibernate: INFO
+    org.mongodb.driver: INFO
+    com.keralakitchen.delivery: INFO
