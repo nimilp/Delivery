@@ -13,13 +13,14 @@ spring:
       port: 27017
 springdoc:
   swagger-ui:
+#    enabled: false
     disable-swagger-default-url: true
     query-config-enabled: true
     path: /docs
   api-docs:
-#    swagger: "2.0"
+#    enabled: true
     path: /v3/api-docs
-    openapi: 2.8.8
+    openapi: 3.1.0
     #version: openapi_3_0
 logging:
   file:
@@ -30,6 +31,8 @@ logging:
     org.springframework.web: INFO
     org.springframework.controllers: INFO
     org.springframework.boot.autoconfigure: ERROR
-    org.hibernate: INFO
+    org.springframework.boot.autoconfigure.security: INFO
+    org.springframework.security: INFO
     org.mongodb.driver: INFO
+    org.mongodb.SQL: INFO
     com.keralakitchen.delivery: INFO
