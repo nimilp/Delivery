@@ -4,12 +4,19 @@ spring:
       username: keralakitchen
       password: keralakitchen
       host: 192.168.1.17
-  logging:
-    file: logs/delivery-app.log
-    pattern:
-        console: "%d %-5level %logger : %msg%n"
-        file: "%d %-5level [%thread] %logger : %msg%n"
-    level:
-      org.springframework.web: DEBUG
-      guru.springframework.controllers: DEBUG
-      org.hibernate: DEBUG
+logging:
+  file:
+    name: logs/delivery-dev-app.log
+#    path: logs/
+  #pattern:
+    console: "%d %-5level %logger : %msg%n"
+#    console: %clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){yellow}
+  #  file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+#    ROOT: DEBUG
+#    org.springframework.web: DEBUG
+#    org.springframework.controllers: DEBUG
+    org.springframework.security: DEBUG
+    #org.hibernate: DEBUG
+    org.mongodb.driver: DEBUG
+    com.keralakitchen.delivery: DEBUG

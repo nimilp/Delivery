@@ -19,7 +19,7 @@ public class UserMapper implements IMapper{
     @Override
     public List<User> mapToUsers(List<Users> users) {
         if (!users.isEmpty()) {
-            return users.stream().map(user -> new User(user.getId(), user.getFirstName(), user.getLastName())).collect(Collectors.toList());
+            return users.stream().map(user -> new User(user.getId(), user.getFirstName(), user.getLastName(),"")).collect(Collectors.toList());
 
         }
         return Collections.emptyList();
