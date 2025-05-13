@@ -18,4 +18,5 @@ logging:
 #    org.springframework.controllers: DEBUG
     org.springframework.security: DEBUG
     #org.hibernate: DEBUG
+    org.mongodb.driver: DEBUG
     com.keralakitchen.delivery: DEBUG

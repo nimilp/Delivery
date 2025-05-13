@@ -1,5 +1,6 @@
 package com.keralakitchen.delivery.security;
 
+import com.keralakitchen.delivery.enums.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,9 +27,10 @@ public class KeralaKitchenSecurityService implements UserDetailsService
 
             UserDetails userDetails =  User.builder()
                 .username(username)
-                .password(password)
+                .password(password).roles(Constants.UserType.Admin.name())
 //                .roles("USER")
                 .build();
+
             return userDetails;
 //        return new InMemoryUserDetailsManager(userDetails);
         } else {
