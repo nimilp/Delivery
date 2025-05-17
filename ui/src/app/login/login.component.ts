@@ -29,7 +29,6 @@ export class LoginComponent {
     }
 
     login(){
-        console.log(this.authService)
         this.authService.authenticate(this.getUsername()?.value, this.getPassword()?.value)
     }
 }
