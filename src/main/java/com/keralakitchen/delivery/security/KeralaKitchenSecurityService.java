@@ -28,11 +28,9 @@ public class KeralaKitchenSecurityService implements UserDetailsService
             UserDetails userDetails =  User.builder()
                 .username(username)
                 .password(password).roles(Constants.UserType.Admin.name())
-//                .roles("USER")
                 .build();
 
             return userDetails;
-//        return new InMemoryUserDetailsManager(userDetails);
         } else {
             throw new UsernameNotFoundException("Access Denied");
         }

@@ -1,48 +1,31 @@
 package com.keralakitchen.delivery.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Bean
+    public WebSecurityCustomizer ignoringCustomizer() {
+        return (web) -> web.ignoring().requestMatchers( "/swagger-ui/**", "/v3/api-docs/**","docs");
+    }
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        return httpSecurity.csrf(AbstractHttpConfigurer::disable)
+//        return httpSecurity.csrf( csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+        return httpSecurity.csrf(Customizer.withDefaults())
                 .authorizeHttpRequests(authorize -> {
                         authorize.anyRequest().authenticated();
-                        }).httpBasic(Customizer.withDefaults()).build();
-
-//                    authorize.requestMatchers("/swagger-ui/**", "/v3/api-docs","/dummy/*").permitAll())
-//                    authorize.requestMatchers("/users/**").authenticated()
-
-
-//                    authorize.requestMatchers("/docs/*","/users/**").hasAuthority(Constants.UserType.Admin.name())
-//                            .anyRequest().authenticated())
-//                     .httpBasic(Customizer.withDefaults())
-//                }).httpBasic(Customizer.withDefaults())
-//                au
-
-
-//        httpSecurity.formLogin(Customizer.withDefaults())
-//                .httpBasic(Customizer.withDefaults());
-//        return httpSecurity.build();
-
-//        return http.addFilterAfter(new AuditInterceptor(), AnonymousAuthenticationFilter.class)
-//                .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/private/**"))
-//                        .authenticated())
-//                .httpBasic(Customizer.withDefaults())
-//                .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/public/showProducts"))
-//                        .permitAll())
-//                .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/public/registerUser"))
-//                        .anonymous())
-//                .build();
-
+                }).httpBasic(Customizer.withDefaults()).build();
     }
 
 
