@@ -6,6 +6,7 @@ spring:
     user:
       name: admin
       password: $2a$10$LAcnTld1x/LFDjFRU.sXzu2FKF3YtYIfPH5Kx5gGzLopsBq0uWQhC
+    ignore: /swagger-ui/**, /v3/api-docs/**,docs
   data:
     mongodb:
       authentication-database: admin

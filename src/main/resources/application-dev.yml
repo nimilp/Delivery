@@ -4,6 +4,8 @@ spring:
       username: keralakitchen
       password: keralakitchen
       host: 192.168.1.17
+  security:
+    ignore: /,/swagger-ui/**, /v3/api-docs/**,/docs,/items/**
 logging:
   file:
     name: logs/delivery-dev-app.log
