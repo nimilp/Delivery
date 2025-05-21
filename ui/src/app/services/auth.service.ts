@@ -8,31 +8,19 @@ const headers = new HttpHeaders().set('Accept', 'application/json');
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-    url: string = '/api/login'//'http://localhost:8081/keralakitchn/dummy'
+    url: string = '/api/login'
     // $authenticationState = new BehaviorSubject<boolean>(false);
     httpClient = inject(HttpClient)
     
     authenticate(username: string, password: string){
         console.log(username)
         var header = new HttpHeaders(Credential?{
-            authorization: 'Basic '+ btoa(username+'+' + password)
+        authorization: 'Basic '+ btoa(username+'+' + password)
         }:{});
         this.httpClient.post(this.url,{header},).subscribe(response => {
 
             console.log('Here: '+ response)
         })
-    
-        // this.httpClient.get<User>('/api/dummy',{ headers },).su=>{
-        //     if(response !== null){
-        //         // this.$authenticationState.next(true)
-
-                
-        //         console.log(response.firstName)
-        //     } else {
-        //         console.log('Error')
-        //     }
-        // }))
-        
     }
     
 }
