@@ -3,7 +3,7 @@
     ><a href="/home"
       ><img id="logo" src="/assets/app-images/android-chrome-192x192.png" /></a
   ></span>
-  <span>Demo</span><span class="spacer"></span>
+  <span>{{appName}}</span><span class="spacer"></span>
   <a href="/login" mat-button>Sign In</a>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -15,4 +15,4 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-toolbar class="app-footer"><mat-icon>mail</mat-icon> 123&#64;123.com&nbsp;&copy; 2025 Demo</mat-toolbar>
+<mat-toolbar class="app-footer"><!--<mat-icon>mail</mat-icon> 123&#64;123.com&nbsp;-->&copy; {{year}} {{appName}}</mat-toolbar>

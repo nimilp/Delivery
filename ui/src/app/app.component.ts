@@ -12,5 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './app.component.sass'
 })
 export class AppComponent {
-  title = 'c';
+  appName = 'Demo Demo Demo';
+  year = new Date().getFullYear()
 }
