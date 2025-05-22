@@ -12,14 +12,4 @@ export class ItemService {
         console.log("in Get Items")
         return this.http.get<Item[]>(this.getItemUrl);
     }
-    // httpClient = inject(HttpClient);
-
-    // private items = Observable<Item[]>;
-    // getItem = '/api/items'
-
-    // public getItems(): Item[] {
-
-    //     return this.httpClient.get(this.getItem);
-
-    // }
 }
