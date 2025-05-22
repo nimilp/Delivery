@@ -24,7 +24,7 @@ export class AppComponent{
   // itemService = inject(ItemService)
   constructor(private itemService: ItemService) {
 
-    this.items = itemService.getItems();
+    this.items = itemService.getCategories();
   }
   // ngOnInit(): void {
   //   this.items = this.itemService.getItems();

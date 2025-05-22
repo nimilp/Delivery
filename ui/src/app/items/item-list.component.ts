@@ -4,6 +4,7 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from '../services/item-service';
+import { Item } from '../models/item';
 
 
 @Component({
@@ -15,14 +16,17 @@ import { ItemService } from '../services/item-service';
 export class ItemListComponent implements OnInit {
 
   itemService = inject(ItemService);
-  displayedColumns: string[] = ['position', 'name', 'Description', 'symbol'];
-  data =new MatTableDataSource([
-    {id:1,name:"hi"},
-    {id:2,name:"hiT"},
-    {id:3,name:"hiV"},
-    {id:4,name:"hiS"},
-  ]);
-  categoryId: string | null = '';
+  items: Item[] = [];
+  parent: Item = {
+    _id: '',
+    id: '',
+    name: '',
+    otherName: '',
+    description: '',
+    parentId: ''
+  };
+  displayedColumns: string[] = ['id', 'name','Other Name', 'Description'];
+  categoryId :string|null= '';
   constructor(private activeRout: ActivatedRoute) {
 
   }
@@ -31,6 +35,16 @@ export class ItemListComponent implements OnInit {
     // data = this.itemService.getItems();
     this.activeRout.paramMap.subscribe(params => {
       this.categoryId = params.get('id');
+    })
+
+    this.itemService.getItems(this.categoryId ||'').subscribe((res: Item[])=> {
+      console.log(res)
+      this.items = res;
+    })
+
+    this.itemService.getParent(this.categoryId ||'').subscribe((res: Item)=> {
+      console.log(res)
+      this.parent = res;
     })
   }
 
