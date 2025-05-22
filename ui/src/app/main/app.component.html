@@ -1,0 +1,33 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span
+    ><a href="/home"
+      ><img id="logo" src="/assets/app-images/android-chrome-192x192.png" /></a
+  ></span>
+  <span>{{ appName }}</span
+  ><span class="spacer"></span>
+  <a href="/login" mat-button>Sign In</a>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened [fixedInViewport]="false">
+    <p>
+      <mat-list role="list">
+        @for (item of (items | async); track item.id) {
+        <mat-list-item>
+          <span>{{ item.name }}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar class="app-footer"
+  ><!--<mat-icon>mail</mat-icon> 123&#64;123.com&nbsp;-->&copy; {{ year }}
+  {{ appName }}</mat-toolbar
+>

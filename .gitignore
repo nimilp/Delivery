@@ -1,6 +1,6 @@
 HELP.md
 .DS_Store
-*.log
+logs/
 *delivery-app*.gz
 target/
 !.mvn/wrapper/maven-wrapper.jar
