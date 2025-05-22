@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,18 +13,23 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatListItem,MatDialogModule],
+  imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatListItem ,MatDialogModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class AppComponent {
+export class AppComponent{
 
-  public items: Observable<Item[]>;
+  items: Observable<Item[]> ;//= new Observable<Item[]>();
+  // itemService = inject(ItemService)
   constructor(private itemService: ItemService) {
 
     this.items = itemService.getItems();
   }
+  // ngOnInit(): void {
+  //   this.items = this.itemService.getItems();
+  //   // throw new Error('Method not implemented.');
+  // }
   appName = 'Demo Demo Demo';
   year = new Date().getFullYear();
 }
