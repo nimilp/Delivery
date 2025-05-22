@@ -1,6 +1,7 @@
 package com.keralakitchen.delivery.controller;
 
 import com.keralakitchen.delivery.exception.NoUsersException;
+import com.keralakitchen.delivery.model.Item;
 import com.keralakitchen.delivery.model.User;
 import com.keralakitchen.delivery.service.service.IUserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,25 +20,27 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/dummy")
-@Tag(name="Dummy Api")
-public class DummyController extends BaseController{
+@RequestMapping("/items")
+@Tag(name="Items Api")
+public class ItemController extends BaseController{
 
     @Autowired
     IUserService userService;
 
-    @Operation(summary = "Get Dummy", description = "Api Dummy")
+    @Operation(summary = "Get Items or categories", description = "Api Items")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "400", description = "Operation is successful."),
             @ApiResponse(responseCode = "404", description = "")
     })
+
     @GetMapping
-    public ResponseEntity<List<User>> get() throws NoUsersException {
-        log.info("in Dummy");
-        User user = new User("John","","","");
-        List<User> users = userService.getUsers(user);
-        if(!users.isEmpty()) {
-            return new ResponseEntity<>(users, HttpStatus.OK);
+    public ResponseEntity<List<Item>> get() throws NoUsersException {
+        log.info("in Items");
+        Item item1 = new Item("1","Vegiterian","Vegiterian");
+        Item item2 = new Item("2","Non-Vegiterian","Non Vegiterian");
+        List<Item> items = List.of(item1, item2);
+        if(!items.isEmpty()) {
+            return new ResponseEntity<>(items, HttpStatus.OK);
         } else {
             throw new NoUsersException("{\"Message\":\"No Users\"}");
         }

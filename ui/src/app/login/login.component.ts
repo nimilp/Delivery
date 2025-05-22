@@ -5,6 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../services/auth.service';
+import { ItemService } from '../services/item-service';
+import { Item } from '../models/item';
 
 
 @Component({
@@ -15,8 +17,9 @@ import { AuthService } from '../services/auth.service';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent {
-
+    
     authService = inject(AuthService);
+    
     loginForm: FormGroup = new FormGroup({
         username:  new FormControl(''),
         password: new FormControl('')
