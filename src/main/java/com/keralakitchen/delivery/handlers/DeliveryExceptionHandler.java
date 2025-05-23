@@ -1,9 +1,7 @@
 package com.keralakitchen.delivery.handlers;
 
 import com.keralakitchen.delivery.exception.CreateItemException;
-import com.keralakitchen.delivery.exception.CreateUserException;
 import com.keralakitchen.delivery.exception.NoDataException;
-import com.keralakitchen.delivery.exception.NoUserException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class UserExceptionHandler extends ResponseEntityExceptionHandler {
+public class DeliveryExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NoDataException.class)
