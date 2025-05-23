@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,20 +16,24 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatListItem ,MatDialogModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
-  // schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppComponent{
 
-  items: Observable<Item[]> ;//= new Observable<Item[]>();
-  // itemService = inject(ItemService)
+  appName = 'Demo Demo Demo';
+  year = new Date().getFullYear();
+  items!: Observable<Item[]>;//= new Observable<Item[]>();
   constructor(private itemService: ItemService) {
 
     this.items = itemService.getCategories();
+    // cdr.detectChanges();
   }
+
   // ngOnInit(): void {
-  //   this.items = this.itemService.getItems();
+
+  //   this.items = this.itemService.getCategories();
+  //   this.cdr.detectChanges();
+  //   console.debug('Page Loaded')
   //   // throw new Error('Method not implemented.');
   // }
-  appName = 'Demo Demo Demo';
-  year = new Date().getFullYear();
+  
 }
