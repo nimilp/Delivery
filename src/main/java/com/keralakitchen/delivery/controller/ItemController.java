@@ -36,7 +36,7 @@ public class ItemController extends BaseController{
 
     @GetMapping("")
     public ResponseEntity<List<Items>> getCategories() throws NoDataException {
-        log.info("in Items");
+        log.info("in Categories");
         List<Items> items = itemService.getItems("");
         if(!items.isEmpty()) {
             return new ResponseEntity<>(items, HttpStatus.OK);

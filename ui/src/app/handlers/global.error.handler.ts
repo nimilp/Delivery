@@ -19,7 +19,8 @@ export class GlobalErrorHandler implements ErrorHandler {
       message = error.message ? error.message : error.toString();
       notifier.showClientErrorMessage(message);
     }
+
     // log every error to the console
-    console.error(error.message);
+    console.error(error);
   }
 }

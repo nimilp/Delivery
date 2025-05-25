@@ -10,8 +10,8 @@
   <table mat-table [dataSource]="itemsData" matSort>
     <!-- ID Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      <th mat-header-cell *matHeaderCellDef disabled="true">ID</th>
+      <td mat-cell *matCellDef="let row ">{{ row.id }}</td>
     </ng-container>
     <!-- Name Column -->
     <ng-container matColumnDef="name">
@@ -26,7 +26,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
       <td mat-cell *matCellDef="let row">{{ row.description }}</td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
     <!-- Row shown when there is no matching data. -->

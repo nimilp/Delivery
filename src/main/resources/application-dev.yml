@@ -4,6 +4,7 @@ spring:
       username: keralakitchen
       password: keralakitchen
       host: 192.168.1.17
+      database: SandBox
   security:
     ignore: /, /swagger-ui/**, /v3/api-docs/**, /docs, /items/**
 logging:
@@ -22,3 +23,4 @@ logging:
     #org.hibernate: DEBUG
 #    org.mongodb.driver: DEBUG
     com.keralakitchen.delivery: DEBUG
+    org.springframework.data.mongodb.core: DEBUG
