@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, NO_ERRORS_SCHEMA } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,18 +13,27 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatListItem,MatDialogModule],
+  imports: [RouterOutlet, CommonModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatListItem ,MatDialogModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass',
-  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
-export class AppComponent {
+export class AppComponent{
 
-  public items: Observable<Item[]>;
-  constructor(private itemService: ItemService) {
-
-    this.items = itemService.getItems();
-  }
   appName = 'Demo Demo Demo';
   year = new Date().getFullYear();
+  items!: Observable<Item[]>;//= new Observable<Item[]>();
+  constructor(private itemService: ItemService) {
+
+    this.items = itemService.getCategories();
+    // cdr.detectChanges();
+  }
+
+  // ngOnInit(): void {
+
+  //   this.items = this.itemService.getCategories();
+  //   this.cdr.detectChanges();
+  //   console.debug('Page Loaded')
+  //   // throw new Error('Method not implemented.');
+  // }
+  
 }

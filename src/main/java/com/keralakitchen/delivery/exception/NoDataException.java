@@ -5,10 +5,10 @@ import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class NoUsersException extends Exception{
+public class NoDataException extends Exception{
 
     private String message;
-    public NoUsersException(String s){
+    public NoDataException(String s){
         super(s);
         this.message = s;
 

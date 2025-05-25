@@ -15,8 +15,9 @@
     <p>
       <mat-list role="list">
         @for (item of (items | async); track item.id) {
+      
         <mat-list-item>
-          <span>{{ item.name }}</span>
+          <a href="category/{{item.id}}" mat-button>{{ item.name }}</a>
         </mat-list-item>
         }
       </mat-list>

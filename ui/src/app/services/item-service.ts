@@ -8,8 +8,18 @@ export class ItemService {
 
     private readonly http: HttpClient = inject(HttpClient);
     private getItemUrl = '/api/items'
-    public getItems(): Observable<Item[]> {
-        console.log("in Get Items")
+    public getCategories(): Observable<Item[]> {
+        console.log("in Get Categories")
         return this.http.get<Item[]>(this.getItemUrl);
+    }
+
+    public getItems(id: string): Observable<Item[]> {
+        console.log("in Get Items")
+        return this.http.get<Item[]>(this.getItemUrl+"/"+id);
+    }
+    
+    public getParent(id: string): Observable<Item> {
+        console.log("in Get Category")
+        return this.http.get<Item>(this.getItemUrl+"/parent/"+id);
     }
 }
