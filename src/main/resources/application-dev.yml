@@ -5,8 +5,8 @@ spring:
       password: keralakitchen
       host: 192.168.1.17
       database: SandBox
-  security:
-    ignore: /, /swagger-ui/**, /v3/api-docs/**, /docs, /items/**
+#  security:
+#    ignore: /, /swagger-ui/**, /v3/api-docs/**, /docs, /items/**
 logging:
   file:
     name: logs/delivery-dev-app.log

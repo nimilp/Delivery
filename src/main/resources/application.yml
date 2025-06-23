@@ -1,20 +1,26 @@
 server:
   servlet:
     context-path: /keralakitchen
+  port: 8090
 spring:
   security:
     user:
       name: admin
       password: $2a$10$LAcnTld1x/LFDjFRU.sXzu2FKF3YtYIfPH5Kx5gGzLopsBq0uWQhC
-    ignore: /swagger-ui/**, /v3/api-docs/**,docs
+#    ignoreList: /keralakitchen/docs/
+    ignoreList: /resources/**,/static/**,/swagger-ui/**,/swagger-ui.html, /v3/api-docs/**,/docs/**,/css/**, /js/**, /images/**,/items/**
   data:
     mongodb:
       authentication-database: admin
+      username: keralakitchen
+      password: keralakitchen
       database: KeralaKitchen
+      host: 192.168.1.17
       port: 27017
 springdoc:
   swagger-ui:
 #    enabled: false
+#    enable-spring-security: false
     disable-swagger-default-url: true
     query-config-enabled: true
     path: /docs
@@ -27,13 +33,14 @@ logging:
   file:
 #    path: logs/
     name: logs/delivery-app.log
+    console: "%d %-4level %logger : %msg%n"
   level:
     ROOT: INFO
     org.springframework.web: INFO
     org.springframework.controllers: INFO
-    org.springframework.boot.autoconfigure: ERROR
-    org.springframework.boot.autoconfigure.security: INFO
-    org.springframework.security: INFO
-    org.mongodb.driver: INFO
+    org.springframework.boot.autoconfigure: INFO
+    org.springframework.boot.autoconfigure.security: DEBUG
+    org.springframework.security: DEBUG
+    org.mongodb.driver: ERROR
     org.mongodb.SQL: INFO
     com.keralakitchen.delivery: INFO
